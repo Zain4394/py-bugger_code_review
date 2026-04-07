@@ -73,7 +73,7 @@ def attribute_error_bugger(py_files):
     # Note that not all bugger functions need this step.
     node_count = cst_utils.count_nodes(tree, node)
     if node_count > 1:
-        node_index = random.randrange(0, node_count - 1)
+        node_index = random.randrange(0, node_count - 1)    #Bug no 1 reported in the Issues this should be node_count not node_count -1 as it will leave the last node unattended
     else:
         node_index = 0
 
@@ -150,7 +150,7 @@ def _get_random_node(py_files, node_type):
     """
     # Find all relevant nodes. Bail if there are no relevant nodes.
     if not (paths_nodes := cst_utils.get_paths_nodes(py_files, node_type)):
-        return False, False
+        return False, False                                                               # bug no 2 reported in issues it should return (None,None) 
 
     random.shuffle(paths_nodes)
     for path, node in paths_nodes:
@@ -158,4 +158,4 @@ def _get_random_node(py_files, node_type):
             return path, node
     else:
         # All nodes have already been modified to introduce a previous bug.
-        return False, False
+        return False, False                                                                # bug no 2 reported in issues  IT should return (None,None)
