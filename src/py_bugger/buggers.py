@@ -19,7 +19,7 @@ from py_bugger.cli.config import pb_config
 
 ### --- *_bugger functions ---
 
-
+                                                # bug no 4 starts here 
 def module_not_found_bugger(py_files):
     """Induce a ModuleNotFoundError.
 
@@ -32,7 +32,7 @@ def module_not_found_bugger(py_files):
         return False
 
     # Parse user's code.
-    source = path.read_text()
+    source = path.read_text()        # BUg no 3 
     tree = cst.parse_module(source)
     wrapper = MetadataWrapper(tree)
     metadata = wrapper.resolve(PositionProvider)
