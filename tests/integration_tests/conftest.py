@@ -7,7 +7,7 @@ actual code should probably be an integration test.
 import pytest
 
 from py_bugger.utils.modification import modifications
-from py_bugger.cli.config import pb_config
+from py_bugger.cli.config import pb_config  # bug no 11 starts from here and end at line 26
 
 
 @pytest.fixture(autouse=True, scope="function")
@@ -23,7 +23,7 @@ def reset_state():
     pb_config.ignore_git_status = False
     pb_config.verbose = True
 
-    # Reset list of modifications.
+    # Reset list of modifications.        # ends here
     modifications.clear()
 
     # Customize some state. For some tests, you may need to override
