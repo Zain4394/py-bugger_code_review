@@ -81,7 +81,7 @@ def test_8_random_bugs(tmp_path_factory, test_config):
     # With the current random seed, 8 seems to be the smallest number of bugs
     # where it can't finish adding bugs.
     pb_config.target_file = path_dst
-    pb_config.num_bugs = 8
+    pb_config.num_bugs = 8                  # Bug no 14 
     cli_utils.validate_config()
 
     requested_bugs = py_bugger.main()
@@ -117,7 +117,7 @@ def test_indentationerror_multiple_trys(tmp_path_factory, test_config):
     pb_config.exception_type = "IndentationError"
     cli_utils.validate_config()
 
-    requested_bugs = py_bugger.main()
+    requested_bugs = py_bugger.main()                 #Bug no 13
 
     # Check that only one modification was made.
     assert len(modifications) == 1
