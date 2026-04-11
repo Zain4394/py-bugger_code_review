@@ -22,7 +22,7 @@ from py_bugger.cli import cli_messages
         ("ModuleNotFoundErrorr", "ModuleNotFoundError"),
     ],
 )
-def test_exception_type_typo(actual_expected):
+def test_exception_type_typo(actual_expected):                    # Bug no 15 
     """Test appropriate handling of a typo in the exception type."""
     # Run py-bugger against file.
     exception_type, correction = actual_expected
@@ -36,7 +36,7 @@ def test_exception_type_typo(actual_expected):
     assert msg_expected in stdout
 
 
-def test_exception_type_unsupported():
+def test_exception_type_unsupported():             # Bug no 16
     """Test appropriate handling of an unsupported exception type."""
     # Run py-bugger against file.
     exception_type = "CompletelyUnsupportedExceptionType"
