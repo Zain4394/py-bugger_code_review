@@ -7,7 +7,7 @@ from py_bugger.utils import file_utils
 from py_bugger.utils.modification import Modification, modifications
 
 
-def make_typo(name):
+def make_typo(name):                        # Bug no 6 
     """Add a typo to the name of an identifier.
 
     Randomly decides which kind of change to make.
@@ -15,11 +15,11 @@ def make_typo(name):
     typo_fns = [remove_char, insert_char, modify_char]
 
     while True:
-        typo_fn = random.choice(typo_fns)
+        typo_fn = random.choice(typo_fns)       # bug no 6 ends here 
         new_name = typo_fn(name)
 
         # Reject names that match builtins.
-        if new_name in dir(builtins):
+        if new_name in dir(builtins):           # Bug no 9 
             continue
 
         return new_name
@@ -27,7 +27,7 @@ def make_typo(name):
 
 def remove_char(name):
     """Remove a character from the name."""
-    chars = list(name)
+    chars = list(name)                             # bug no 10 
     index_remove = random.randint(0, len(chars) - 1)
     del chars[index_remove]
 
@@ -50,7 +50,7 @@ def modify_char(name):
     index = random.randint(0, len(chars) - 1)
 
     # Make sure new_char does not match current char.
-    while True:
+    while True:                                           # Bug no 7 is here
         new_char = random.choice("abcdefghijklmnopqrstuvwxyz")
         if new_char != chars[index]:
             break
@@ -59,7 +59,7 @@ def modify_char(name):
     return "".join(chars)
 
 
-def add_indentation(path, target_line):
+def add_indentation(path, target_line):                    # bug no 8
     """Add one level of indentation (four spaces) to line."""
     indentation_added = False
 
